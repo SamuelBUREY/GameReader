@@ -13,7 +13,7 @@ class GamesVM(application: Application) : AndroidViewModel(application) {
 
     private var repository: GameRepository =
         GameRepository(application)
-    private var allgames: LiveData<List<Game>> = repository.getAllGames()
+    var allgames: LiveData<List<Game>> = repository.getAllGames()
 
     fun insert(game: Game) {
         repository.insert(game)

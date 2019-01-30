@@ -29,7 +29,7 @@ abstract class GamesDataBase : RoomDatabase() {
                     context.applicationContext,
                     GamesDataBase::class.java,
                     "Games_database"
-                ).build()
+                ).allowMainThreadQueries().build()
                 INSTANCE = instance
                 return instance
             }

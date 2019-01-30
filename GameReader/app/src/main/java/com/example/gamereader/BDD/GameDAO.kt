@@ -16,7 +16,7 @@ interface GameDAO {
     fun loadAllByIds(gameIds: IntArray): LiveData<List<Game>>
 
     @Query("SELECT * FROM game WHERE name LIKE :first ")
-    fun findByName(first: String, last: String): Game
+    fun findByName(first: String): Game
 
     @Insert
     fun insertAll(vararg games: Game)
