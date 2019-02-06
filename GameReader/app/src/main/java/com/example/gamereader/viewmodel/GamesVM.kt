@@ -11,10 +11,13 @@ import com.example.gamereader.Model.Game
 
 class GamesVM(application: Application) : AndroidViewModel(application) {
 
-    private var repository: GameRepository =
-        GameRepository(application)
-    var allgames: LiveData<List<Game>> = repository.getAllGames()
+    private lateinit  var repository: GameRepository
+    lateinit var allgames: LiveData<List<Game>>
 
+    init{
+        repository=GameRepository(application)
+        allgames=repository.getAllGames()
+    }
     fun insert(game: Game) {
         repository.insert(game)
     }

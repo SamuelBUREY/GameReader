@@ -24,10 +24,13 @@ class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         if (gamelist != null) {
-            val (game) = gamelist!![position]
-            holder.gameView.text = game.toString()
+            val game : Game = gamelist!![position]
+            holder.gameName.text = game.id.toString()
+            holder.gameGenre.text = game.genre
+            holder.gamePlateforme.text = game.plateform
+            holder.gameDescription.text = game.description
         } else {
-            holder.gameView.text = "C'est mon jeu"
+            //holder.gameView.text = "C'est mon jeu"
         }
     }
 
@@ -38,17 +41,23 @@ class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<
             0
     }
 
-     fun setData(gamesList: List<Game>) {
-        this.gamelist = gamesList
-        notifyDataSetChanged()
+    fun setData(it: List<Game>) {
+        gamelist=it
+        notifyDataSetChanged();
     }
 
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val gameView: TextView
+        var  gameName: TextView
+        var  gameGenre: TextView
+        var gamePlateforme: TextView
+        var gameDescription: TextView
 
         init {
-            gameView = itemView.findViewById(R.id.game_name)
+            gameName = itemView.findViewById(R.id.game_name)
+            gameGenre = itemView.findViewById(R.id.game_genre)
+            gamePlateforme = itemView.findViewById(R.id.game_plateforme)
+            gameDescription = itemView.findViewById(R.id.game_description)
         }
     }
 }
