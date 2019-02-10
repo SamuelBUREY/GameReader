@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gamereader.Model.Game
 import com.example.gamereader.R
 
-class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
-    private val mInflater: LayoutInflater
-    private var gamelist: List<Game>? = null
 
-    init {
-        mInflater = LayoutInflater.from(context)
-    }
+
+class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
+    private val mInflater: LayoutInflater = LayoutInflater.from(context)
+    private var gamelist: List<Game>? = null
+    var onItemClick: ((Game) -> Unit)? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         val itemView = mInflater.inflate(R.layout.game_list, parent, false)
@@ -25,10 +25,9 @@ class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         if (gamelist != null) {
             val game : Game = gamelist!![position]
-            holder.gameName.text = game.id.toString()
+            holder.gameName.text = game.name
             holder.gameGenre.text = game.genre
             holder.gamePlateforme.text = game.plateform
-            holder.gameDescription.text = game.description
         } else {
             //holder.gameView.text = "C'est mon jeu"
         }
@@ -48,16 +47,20 @@ class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<
 
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var  gameName: TextView
-        var  gameGenre: TextView
+        var gameName: TextView
+        var gameGenre: TextView
         var gamePlateforme: TextView
-        var gameDescription: TextView
+
 
         init {
             gameName = itemView.findViewById(R.id.game_name)
             gameGenre = itemView.findViewById(R.id.game_genre)
             gamePlateforme = itemView.findViewById(R.id.game_plateforme)
-            gameDescription = itemView.findViewById(R.id.game_description)
+            itemView.setOnClickListener {
+                gamelist?.get(adapterPosition)?.let { game -> onItemClick?.invoke(game) }
+
+            }
         }
     }
 }
+

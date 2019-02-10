@@ -2,6 +2,7 @@ package com.example.gamereader.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.gamereader.R
 import com.example.gamereader.viewmodel.GamesVM
@@ -11,37 +12,23 @@ import com.example.gamereader.Model.Game
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gamereader.Fragment.GamesFragment
 import kotlin.random.Random
 
 
-class MainActivity : AppCompatActivity() {
+ class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var  gameAdapter: GameAdapter
-    private lateinit var  gameViewModel: GamesVM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        gameViewModel = ViewModelProviders.of(this).get(GamesVM::class.java)
-
-        game_Add_Button.setOnClickListener{
-               gameViewModel.insert(Game(Random.nextLong(),"GTA","Ceci est un jeu de voiture en ligne ou en solo","XBOX, PS4","voiture ,action"))
+        setSupportActionBar(findViewById(R.id.toolbar_Main))
+        supportActionBar?.setIcon(R.mipmap.ic_launcher)
+        if(supportFragmentManager.findFragmentById(R.id.fragment_container)==null){
+            supportFragmentManager.beginTransaction()
+                    .add(R.id.fragment_container, GamesFragment()).commit()
         }
-        gameAdapter = GameAdapter(this)
-
-
-        var recylerview : RecyclerView = findViewById(R.id.my_recycler_games)
-        recylerview.layoutManager=LinearLayoutManager(this)
-        recylerview.adapter=gameAdapter
-
-        gameViewModel.allgames.observe(this, Observer { games ->
-            games?.let { gameAdapter.setData(it) }
-        })
-
-
-
     }
 
 
