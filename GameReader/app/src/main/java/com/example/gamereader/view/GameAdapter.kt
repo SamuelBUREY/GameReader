@@ -11,6 +11,7 @@ import com.example.gamereader.R
 
 
 
+
 class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
     private var gamelist: List<Game>? = null
@@ -23,6 +24,7 @@ class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
+
         if (gamelist != null) {
             val game : Game = gamelist!![position]
             holder.gameName.text = game.name
@@ -47,20 +49,21 @@ class GameAdapter internal constructor(context: Context) : RecyclerView.Adapter<
 
     inner class GameViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+
         var gameName: TextView
         var gameGenre: TextView
         var gamePlateforme: TextView
-
-
         init {
             gameName = itemView.findViewById(R.id.game_name)
             gameGenre = itemView.findViewById(R.id.game_genre)
             gamePlateforme = itemView.findViewById(R.id.game_plateforme)
             itemView.setOnClickListener {
-                gamelist?.get(adapterPosition)?.let { game -> onItemClick?.invoke(game) }
+                gamelist?.get(adapterPosition)?.let { it1 -> onItemClick?.invoke(it1) }
 
             }
         }
+
+
     }
 }
 

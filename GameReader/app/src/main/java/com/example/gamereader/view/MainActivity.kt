@@ -1,22 +1,15 @@
 package com.example.gamereader.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.example.gamereader.R
-import com.example.gamereader.viewmodel.GamesVM
-import kotlinx.android.synthetic.main.activity_main.*
-import androidx.lifecycle.ViewModelProviders
-import com.example.gamereader.Model.Game
-import androidx.recyclerview.widget.LinearLayoutManager
 
-import androidx.recyclerview.widget.RecyclerView
+import com.example.gamereader.Fragment.GameDetailFragment
 import com.example.gamereader.Fragment.GamesFragment
-import kotlin.random.Random
 
 
- class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
 
 
@@ -30,6 +23,16 @@ import kotlin.random.Random
                     .add(R.id.fragment_container, GamesFragment()).commit()
         }
     }
+
+
+     fun fragmentDetailCall(id:Long){
+         Log.d("idgameActivity",id.toString())
+         val nextFrag = GameDetailFragment.newInstance(id)
+         supportFragmentManager.beginTransaction()
+             .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+             .addToBackStack(null)
+             .commit()
+     }
 
 
 }

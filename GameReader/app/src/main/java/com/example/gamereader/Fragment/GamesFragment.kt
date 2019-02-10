@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gamereader.Model.Game
 import com.example.gamereader.R
 import com.example.gamereader.view.GameAdapter
+import com.example.gamereader.view.MainActivity
 import com.example.gamereader.viewmodel.GamesVM
 
 
@@ -47,13 +48,8 @@ class GamesFragment : Fragment() {
         gamesRecycler.layoutManager = LinearLayoutManager(activity)
         gamesRecycler.adapter=  gameAdapter
         gameAdapter?.onItemClick = { game ->
-
-
-            val nextFrag = GameDetailFragment()
-            activity!!.supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_game_container, nextFrag, "findThisFragment")
-                .addToBackStack(null)
-                .commit()
+           var mactivity : MainActivity = activity as MainActivity
+            mactivity.fragmentDetailCall(game.id)
         }
 
         gameViewModel.insert(Game(Random.nextLong(),"test jeu","ceci est une description","PC","action"))

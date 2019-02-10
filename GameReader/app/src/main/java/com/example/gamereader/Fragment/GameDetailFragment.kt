@@ -6,16 +6,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.gamereader.Model.Game
 import com.example.gamereader.R
-import com.example.gamereader.view.GameAdapter
-import com.example.gamereader.viewmodel.GamesVM
-import kotlin.random.Random
+
+
 
 class GameDetailFragment : Fragment(){
+
+    companion object {
+        const val ARG_ID = "id"
+
+
+        fun newInstance(id: Long): GameDetailFragment {
+            val fragment = GameDetailFragment()
+
+            val bundle = Bundle().apply {
+                putString(ARG_ID, id.toString())
+            }
+            fragment.arguments = bundle
+
+            return fragment
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +35,8 @@ class GameDetailFragment : Fragment(){
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+        val id : Long? = arguments?.getString(ARG_ID)?.toLong()
+        Log.d("idgame",id.toString())
         var view : View =inflater.inflate(R.layout.game_detail,container,false)
         return view
     }
