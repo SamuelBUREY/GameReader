@@ -1,8 +1,10 @@
 package com.example.gamereader.Fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 
@@ -47,13 +49,52 @@ class GamesFragment : Fragment() {
         var gamesRecycler : RecyclerView = view.findViewById(R.id.games_recycler)
         gamesRecycler.layoutManager = LinearLayoutManager(activity)
         gamesRecycler.adapter=  gameAdapter
-        gameAdapter?.onItemClick = { game ->
-           var mactivity : MainActivity = activity as MainActivity
-            mactivity.fragmentDetailCall(game.id)
-        }
-
-        gameViewModel.insert(Game(Random.nextLong(),"test jeu","ceci est une description","PC","action"))
         return view
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_delete -> {
+                deleteGame()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    fun deleteGame() {
+        listener?.deleteGame()
+    }
+
+
+    override fun onGameSelected(gameID: Long) {
+        listener?.onGameSelected(gameID)
+    }
+
+
+    interface OnInteractionListener {
+        fun onGameSelected(gameID: Long)
+        fun deleteGame()
+    }
+    private var listener: OnInteractionListener? = null
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnInteractionListener) {
+            listener = context
+        } else {
+            throw RuntimeException("$context must implement OnInteractionListener")
+        }
+    }
+
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
     }
 
 

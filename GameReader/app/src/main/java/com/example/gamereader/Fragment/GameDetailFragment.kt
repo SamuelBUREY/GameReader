@@ -12,22 +12,6 @@ import com.example.gamereader.R
 
 class GameDetailFragment : Fragment(){
 
-    companion object {
-        const val ARG_ID = "id"
-
-
-        fun newInstance(id: Long): GameDetailFragment {
-            val fragment = GameDetailFragment()
-
-            val bundle = Bundle().apply {
-                putString(ARG_ID, id.toString())
-            }
-            fragment.arguments = bundle
-
-            return fragment
-        }
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +19,7 @@ class GameDetailFragment : Fragment(){
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val id : Long? = arguments?.getString(ARG_ID)?.toLong()
+        val id : Long =
         Log.d("idgame",id.toString())
         var view : View =inflater.inflate(R.layout.game_detail,container,false)
         return view
