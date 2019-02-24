@@ -4,7 +4,7 @@
             android:id="@+id/nav_fragment" app:startDestination="@id/gamesFragment">
 
     <fragment android:id="@+id/gamesFragment"
-              android:name="com.example.gamereader.Fragment.GamesFragment"
+              android:name="com.example.gamereader.fragment.GamesFragment"
               android:label="GamesFragment">
         <action
                 android:id="@+id/action_gamesFragment_to_gameDetailFragment"
@@ -12,7 +12,7 @@
     </fragment>
     <fragment
             android:id="@+id/gameDetailFragment"
-            android:name="com.example.gamereader.Fragment.GameDetailFragment"
+            android:name="com.example.gamereader.fragment.GameDetailFragment"
             android:label="GameDetailFragment">
     <argument
             android:name="gameID"

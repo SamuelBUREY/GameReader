@@ -1,9 +1,8 @@
 package com.example.gamereader.BDD
 
 import android.app.Application
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import com.example.gamereader.Model.Game
+import com.example.gamereader.model.Game
 
 class GameRepository(application: Application) {
 

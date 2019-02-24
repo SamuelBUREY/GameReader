@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.gamereader.Model.Game
+import com.example.gamereader.model.Game
 
 @Dao
 interface GameDAO {

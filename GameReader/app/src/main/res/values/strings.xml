@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">GameReader</string>
     <string name="action_settings">Settings</string>
+    <string name="app_label">Label</string>
+    <string name="search_hint">hint</string>
+    <string name="search_game">Recherche game</string>
 </resources>

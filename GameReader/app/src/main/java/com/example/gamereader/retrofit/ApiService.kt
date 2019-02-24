@@ -1,12 +1,15 @@
 package com.example.gamereader.retrofit
 
-import android.telecom.Call
-import retrofit2.http.GET
+import com.example.gamereader.model.Game
+import retrofit2.Call
+import retrofit2.http.Headers
 
+import retrofit2.http.POST
 
 
 interface ApiService
 {
-    @GET("/games")
-    fun getAllGame(): Call
+    @Headers("user-key: 1514ec7964e14cf09b6edba7a67ce37d")
+    @POST("/games")
+    fun getGameByID(): Call<List<Game>>
 }

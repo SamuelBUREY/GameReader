@@ -3,10 +3,8 @@ package com.example.gamereader.viewmodel
 import androidx.lifecycle.LiveData
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.gamereader.BDD.GameDAO
 import com.example.gamereader.BDD.GameRepository
-import com.example.gamereader.BDD.GamesDataBase
-import com.example.gamereader.Model.Game
+import com.example.gamereader.model.Game
 
 
 class GamesVM(application: Application) : AndroidViewModel(application) {

@@ -7,10 +7,14 @@ class GameJSON (
     @SerializedName("name")
     var name: String,
 
-    @SerializedName("description")
-    var description: Long,
+    @SerializedName("storyline")
+    var storyline: Long,
 
-    @SerializedName("genre")
-    var genre: String){
+    @SerializedName("url")
+    var url: String,
 
-}
+    @SerializedName("summary")
+    var summary : String)
+
+
+

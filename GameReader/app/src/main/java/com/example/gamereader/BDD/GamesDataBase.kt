@@ -3,7 +3,7 @@ package com.example.gamereader.BDD
 import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.gamereader.Model.Game
+import com.example.gamereader.model.Game
 import androidx.room.Room
 
 

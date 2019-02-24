@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 class RetrofitClient {
 
      var retrofit: Retrofit? = null
-     val BASE_URL = "a note url api ICI mtn toute de suite"
+     val BASE_URL = "https://api-v3.igdb.com\n"
 
     fun getRetrofitInstance(): Retrofit? {
         if (retrofit == null) {
@@ -20,3 +20,4 @@ class RetrofitClient {
         return retrofit
     }
 }
+
