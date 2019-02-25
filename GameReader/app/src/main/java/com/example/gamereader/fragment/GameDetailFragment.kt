@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GameDetailFragment : Fragment(){
+class GameDetailFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,32 +23,8 @@ class GameDetailFragment : Fragment(){
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view : View =inflater.inflate(R.layout.game_detail,container,false)
+        var view: View = inflater.inflate(R.layout.game_detail, container, false)
         return view
-    }
-
-
-
-
-
-    fun request(){
-        var retrofit :RetrofitClient = RetrofitClient()
-        val service = retrofit.getRetrofitInstance()?.create(ApiService::class.java)
-
-        val request = service?.getGameByID()
-        request?.enqueue(object : Callback<List<Game>> {
-            override fun onResponse(call: Call<List<Game>>, response: Response<List<Game>>) {
-                val allgame = response.body()
-                if (allgame != null) {
-
-                    for (c in allgame)
-                        Log.d("game",c.name)
-                }
-            }
-            override fun onFailure(call: Call<List<Game>>, t: Throwable) {
-                error("Error Request")
-            }
-        })
     }
 
 

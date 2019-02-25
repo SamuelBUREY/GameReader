@@ -31,20 +31,21 @@ class MainActivity : AppCompatActivity(),GamesFragment.OnInteractionListener {
         super.onCreate(savedInstanceState)
         setContentView(com.example.gamereader.R.layout.activity_main)
         setSupportActionBar(toolbar_Main)
-      /*  navigator = Navigation.findNavController(this,R.id.navigator)
+        navigator = Navigation.findNavController(this,R.id.navigator)
         toolbar_Main.setupWithNavController(navigator, AppBarConfiguration(navigator.graph))
-        */
-        val intent = Intent(applicationContext, SearchActivity::class.java)
-        startActivity(intent)
+
+
 
     }
 
      override fun onGameSelected(gameID: Long) {
-     //   val action = GamesFragmentDirections.actionGamesFragmentToGameDetailFragment(gameID)
-      //  navigator.navigate(action)
+         val action = GamesFragmentDirections.actionGamesFragmentToGameDetailFragment(gameID)
+         navigator.navigate(action)
     }
 
     override fun researchGame() {
+        val intent = Intent(applicationContext, SearchActivity::class.java)
+        startActivity(intent)
 
     }
 
