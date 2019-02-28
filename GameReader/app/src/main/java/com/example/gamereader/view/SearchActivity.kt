@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.Menu
+import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -43,6 +44,8 @@ class SearchActivity : AppCompatActivity(),SearchView.OnQueryTextListener {
         gameAdapter?.setData(games)
         gameAdapter?.onItemClick = { game ->
             repository.insert(game)
+            Toast.makeText(applicationContext,game.name+" ajouté à votre liste !",
+                Toast.LENGTH_LONG).show()
         }
         var gamesRecycler : RecyclerView = findViewById(R.id.games_recycler_search)
         gamesRecycler.layoutManager = LinearLayoutManager(this)
