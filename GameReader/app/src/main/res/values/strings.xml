@@ -5,4 +5,7 @@
     <string name="search_hint">hint</string>
     <string name="search_game">Recherche game</string>
     <string name="rechercher_un_jeu">Rechercher un jeu</string>
+    <string name="nom">Nom :</string>
+    <string name="supprimer_le_jeu">Supprimer le jeu</string>
+    <string name="description">Description</string>
 </resources>

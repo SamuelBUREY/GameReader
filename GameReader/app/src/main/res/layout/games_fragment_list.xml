@@ -23,8 +23,7 @@
                 android:layout_height="match_parent"
                 android:clickable="true"
                 android:focusable="true"
-                tools:listitem="@layout/game_list"
-                tools:showIn="@layout/activity_main">
+                tools:listitem="@layout/game_list">
         </androidx.recyclerview.widget.RecyclerView>
 
 

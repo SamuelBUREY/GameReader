@@ -2,6 +2,7 @@ package com.example.gamereader.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -24,9 +25,7 @@ class GamesFragment : Fragment(),GameAdapter.Callbacks {
 
         gameViewModel = ViewModelProviders.of(this).get(GamesVM::class.java)
         gameViewModel.allgames.observe(this, Observer {
-            gameAdapter.submitList(it)
-        })
-        gameViewModel.insert(Game(Random.nextLong(),"halo","test summary","storyline","https..dlkmdl"))
+            gameAdapter.submitList(it) })
 
         setHasOptionsMenu(true)
     }
@@ -46,11 +45,6 @@ class GamesFragment : Fragment(),GameAdapter.Callbacks {
         game_Add_Button.setOnClickListener { researchGame() }
 
     }
-
-
-
-
-
 
     fun researchGame() {
         listener?.researchGame()

@@ -30,5 +30,9 @@ class GameRepository(application: Application) {
         return allGames
     }
 
+    fun getGame(id:Long):Game{
+        return gameDAO.findByID(id)
+    }
+
 
 }

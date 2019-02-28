@@ -18,6 +18,9 @@ interface GameDAO {
     @Query("SELECT * FROM game WHERE name LIKE :first ")
     fun findByName(first: String): Game
 
+    @Query("SELECT * FROM game WHERE id LIKE :id ")
+    fun findByID(id: Long): Game
+
     @Insert
     fun insertAll(vararg games: Game)
 

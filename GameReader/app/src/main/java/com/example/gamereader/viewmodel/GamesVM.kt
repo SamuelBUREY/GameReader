@@ -9,8 +9,8 @@ import com.example.gamereader.model.Game
 
 class GamesVM(application: Application) : AndroidViewModel(application) {
 
-    private lateinit  var repository: GameRepository
-    lateinit var allgames: LiveData<List<Game>>
+     var repository: GameRepository
+     var allgames: LiveData<List<Game>>
 
     init{
         repository=GameRepository(application)
