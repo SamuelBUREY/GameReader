@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "6a10e5287822a3b6d214f341a9451198",
+    "identityHash": "b67b8d7ac2f75f21f55bcf41f7e53ecc",
     "entities": [
       {
         "tableName": "Game",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `summary` TEXT, `storyline` TEXT, `url` TEXT, `metascore` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `summary` TEXT, `storyline` TEXT, `url` TEXT, `total_rating` REAL, `version_title` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -39,8 +39,14 @@
             "notNull": false
           },
           {
-            "fieldPath": "metascore",
-            "columnName": "metascore",
+            "fieldPath": "total_rating",
+            "columnName": "total_rating",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "version_title",
+            "columnName": "version_title",
             "affinity": "TEXT",
             "notNull": false
           }
@@ -57,7 +63,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6a10e5287822a3b6d214f341a9451198\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b67b8d7ac2f75f21f55bcf41f7e53ecc\")"
     ]
   }
 }
