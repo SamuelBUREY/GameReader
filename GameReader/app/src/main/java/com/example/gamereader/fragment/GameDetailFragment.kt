@@ -34,6 +34,11 @@ class GameDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater.inflate(R.layout.game_detail, container, false)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         text_description_txt.text = game.summary
         game_name_txt.text=game.name
         text_url.text=game.url
@@ -41,7 +46,7 @@ class GameDetailFragment : Fragment() {
             repository.delete(game)
             fragmentManager?.popBackStack()
         }
-        return view
+
     }
 
 }

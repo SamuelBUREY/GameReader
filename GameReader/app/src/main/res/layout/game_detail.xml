@@ -10,7 +10,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="right"
-                app:constraint_referenced_ids="game_name,text_description"/>
+                app:constraint_referenced_ids="game_name,text_description,text_description_txt,text_url"/>
 
         <TextView
                 android:id="@+id/game_name"
